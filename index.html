@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js Game</title>
+	 <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Welcome to my website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	 <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div id="game">
+
+	<section class="container">
+		<div class="row justify-content-center align-items-center top">
+			<div class="col-md-6 text-center">
+				<h3><strong>YOU</strong></h3>
+				<div class="health-bar bg-light mt-3">
+					<div class="health-bar bg-success text-white" :style="{width: playerHealth + '%'}">{{playerHealth}}</div>
+				</div>
+			</div>
+			<div class="col-md-6 text-center">
+				<h3><strong>MONSTER</strong></h3>
+				<div class="health-bar bg-light mt-3">
+					<div class="health-bar bg-success text-white my-auto" :style="{width: monsterHealth + '%'}">{{monsterHealth}}</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="container" v-if="!gameIsRunning">
+		<div class="row bg-light mid align-items-center">
+			<div class="col-md-12 text-center">
+				<button id="start" class="btn bg-primary" @click="startGame" >START NEW GAME</button>
+			</div>
+		</div>
+	</section>
+
+	<section class="container" v-else="gameIsRunning">
+		<div class="row bg-light bottom align-items-center">
+			<div class="col-md-12 text-center ">
+				<button id="attack" class="btn bg-danger" @click='attack'>ATTACK</button>
+				<button id="spcl-attack" class="btn bg-warning" @click="spclAttack">SPECIAL ATTACK</button>
+				<button id="heal" class="btn bg-info" @click="heal">HEAL</button>
+				<button id="give-up" class="btn bg-secondary" @click="giveUp">GIVE UP</button>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container bg-light mt-2">
+			<ul class="text-center text-uppercase">
+				<li v-for="turn in turns" :class="{'player-turn':turn.isPlayer,'monster-turn':!turn.isPlayer}">
+					{{ turn.text }}
+				</li>
+			</ul>
+		</div>
+	</section>
+	
+	</div>
+
+	<script type = "text/javascript" src = "main.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
