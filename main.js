@@ -16,6 +16,7 @@ new Vue
 			this.playerHealth=100;
 			this.monsterHealth=100;
 			this.turns=[];
+			<ul class="text-center text-uppercase">
 		},
 
 		attack:function()

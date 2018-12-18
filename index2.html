@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue projects</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=viewport-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrap/mss/style.css">
+
+</head>
+<body>
+<script src="Vue/vue.min.js" type="text/javascript"></script>
+<div id="id1">
+	<section class="container">
+	<div class="row top justify-content-center align-items-center">
+		<div class="col-md-6">
+			<h1 class="bg-danger text-dark d-flex justify-content-center"><strong>You</strong></h1>
+
+			<!-----Target this----->
+			<div class="healthbar bg-white mt-3">
+				<div class="health-bar bg-success text-white" :style="{width: playerHealth + '%'}">
+				{{playerHealth}}
+			</div>
+			</div>
+
+			<!-----Target this----->
+		</div>
+		<div class="col-md-6">
+			<h1 class="bg-danger text-dark d-flex justify-content-center"><strong>Monster</strong></h1>
+
+			<!-----Target this----->
+			<div class="healthbar bg-white mt-3">
+			<div class="health-bar bg-success text-white" :style="{width: monasterHealth + '%'}">{{monasterHealth}}</div>
+			</div>
+
+			<!-----Target this----->
+		</div>
+	</div>
+	</section>
+
+   
+      	<section class="container" v-if="!gameIsRunning">
+      		<div class="row bg-light mid align-items-center">
+      			<div  class="col-md-12 text-center">
+      				<button id="start" class="btn bg-primary" @click="startGame">Start New Game</button>
+      			</div>
+      		</div>
+      	
+      </section>
+
+
+
+ 
+   <section  class="container" v-else="gameIsRunning"><!-- You can use v-if here--->
+    	<div class="row bg-light align-items-center bottom">
+    		<div class="col-md-12 text-center">
+    			<button id="attack" class="btn bg-danger" @click="attack">ATTACK</button>
+    			<button id="spec-attack" class="btn bg-warning" @click="specAttack">SPECIAL ATTACK</button>
+    			<button id="heal" class="btn bg-info" @click="heal">HEAL</button>
+    			<button id="give-up" class="btn bg-sceondary" @click="giveUp">GIVE UP</button>
+    		</div>
+    	</div>
+    	
+    </section>
+
+
+
+
+  <section>
+  	<div class="container bg-light mt-2" v-if="turns.length > 0">
+  		<ul class="text-center text-uppercae">
+  			<li v-for="turn in turns"> 
+  				{{turn}}
+  			</li>
+  		</ul>
+  	</div>
+  </section>
+
+
+</div>
+<script src="bootstrap/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="main03.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+</body>
+</html>
